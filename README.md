@@ -33,7 +33,7 @@ be +, -, * or /.
 
 **'Correct'** is returned by Nigel if the submitted answer was correct.
 
-TODO - What about wrong answer???
+**'Incorrect'** is returned by Nigel if the submitted answer was correct.
 
 
 ### Example
