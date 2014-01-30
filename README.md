@@ -1,5 +1,7 @@
 # A XMPP bot that talks to Nigel the quiz bot
 
+[![Build Status](https://travis-ci.org/wgriffiths/NigelsPal.png?branch=master)](https://travis-ci.org/wgriffiths/NigelsPal)
+
 ## Commands
 Command supported by Nigel.
 
