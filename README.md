@@ -1,6 +1,7 @@
 # A XMPP bot that talks to Nigel the quiz bot
 
 ## Commands
+Command supported by Nigel.
 
 ### Help
 A message in the form **'help'** will return a Nigel's intro message.
@@ -18,6 +19,7 @@ and should be rounded HALF_EVEN if necessary.
 A message in the form **'reset'** will reset the quiz.
 
 ## Messages 
+Message returned by Nigel
 
 ### Questions
 
@@ -29,7 +31,7 @@ be +, -, * or /.
 
 **'Correct'** is returned by Nigel if the submitted answer was correct.
 
-TODO - What about wrong answer
+TODO - What about wrong answer???
 
 
 ### Example
