@@ -2,7 +2,6 @@ package com.cwmni.nigelspal;
 
 import static java.lang.Thread.sleep;
 import org.jivesoftware.smack.Chat;
-import org.jivesoftware.smack.ChatManagerListener;
 import org.jivesoftware.smack.ConnectionConfiguration;
 import org.jivesoftware.smack.PacketCollector;
 import org.jivesoftware.smack.SASLAuthentication;

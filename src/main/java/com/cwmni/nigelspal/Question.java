@@ -6,12 +6,11 @@ import java.util.regex.Pattern;
 /**
  *
  */
-final class QuestionResponce
+final class Question
 {
 
-    enum Operator
+    enum Operation
     {
-
         ADD, SUBTRACT, DIVIDE, MULTIPLY
     };
 
@@ -22,11 +21,14 @@ final class QuestionResponce
     private final int mySecondNumber;
     private final String myOperator;
 
-    public QuestionResponce(String theQuestion)
+    public Question(String theQuestion)
     {
         Matcher theMatcher = QUESTION_PATTERN.matcher(theQuestion);
 
-        theMatcher.find();
+        if (!theMatcher.find())
+        {
+            throw new IllegalArgumentException("Invalid question format.");
+        }
 
         myQuestionNumber = Integer.parseInt(theMatcher.group(1));
         myFirstNumber = Integer.parseInt(theMatcher.group(2));
@@ -49,27 +51,27 @@ final class QuestionResponce
         return mySecondNumber;
     }
 
-    public Operator getOperator()
+    public Operation getOperation()
     {
 
         if ("+".equals(myOperator))
         {
-            return Operator.ADD;
+            return Operation.ADD;
         }
 
         if ("-".equals(myOperator))
         {
-            return Operator.SUBTRACT;
+            return Operation.SUBTRACT;
         }
-        
+
         if ("/".equals(myOperator))
         {
-            return Operator.DIVIDE;
+            return Operation.DIVIDE;
         }
-        
+
         if ("*".equals(myOperator))
         {
-            return Operator.MULTIPLY;
+            return Operation.MULTIPLY;
         }
 
         throw new UnsupportedOperationException("The " + myOperator + " operator is not supported.");

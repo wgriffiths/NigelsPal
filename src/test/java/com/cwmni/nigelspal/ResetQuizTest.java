@@ -3,13 +3,13 @@ package com.cwmni.nigelspal;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-public class ResetMessageTest
+public class ResetQuizTest
 {
 
     @Test
     public void testGetCommand()
     {
-        assertEquals("reset", new ResetMessage().getMessage());
+        assertEquals("reset", new ResetQuiz().getMessage());
     }
 
 }

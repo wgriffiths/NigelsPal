@@ -4,9 +4,9 @@ package com.cwmni.nigelspal;
  * Message used to start a quiz, the number of questions required are supplied
  * to the constructor.
  */
-final class StartMessage
+final class StartQuiz implements QuizeMessage
 {
-
+    private static final String START_MESSAGE = "send me %s questions.";
     private final int myNumberOfQuestions;
 
     /**
@@ -15,14 +15,15 @@ final class StartMessage
      * @param theNumberOfQuestions - number of questions that should be in the
      * quiz.
      */
-    public StartMessage(int theNumberOfQuestions)
+    public StartQuiz(int theNumberOfQuestions)
     {
         myNumberOfQuestions = theNumberOfQuestions;
     }
 
+    @Override
     public String getMessage()
     {
-        return "send me " + myNumberOfQuestions + " questions.";
+        return String.format(START_MESSAGE, myNumberOfQuestions);
     }
 
 }
