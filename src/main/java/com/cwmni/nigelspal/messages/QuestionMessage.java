@@ -70,31 +70,9 @@ public final class QuestionMessage implements QuizMessage
         return mySecondNumber;
     }
 
-    public Operation getOperation()
+    public String getOperation()
     {
-
-        if ("+".equals(myOperation))
-        {
-            return Operation.ADD;
-        }
-
-        if ("-".equals(myOperation))
-        {
-            return Operation.SUBTRACT;
-        }
-
-        if ("/".equals(myOperation))
-        {
-            return Operation.DIVIDE;
-        }
-
-        if ("*".equals(myOperation))
-        {
-            return Operation.MULTIPLY;
-        }
-
-        throw new UnsupportedOperationException("The " + myOperation + " operator is not supported.");
-
+       return myOperation;
     }
 
 }

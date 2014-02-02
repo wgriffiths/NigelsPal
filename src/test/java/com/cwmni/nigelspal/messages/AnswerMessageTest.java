@@ -1,7 +1,5 @@
 package com.cwmni.nigelspal.messages;
 
-import com.cwmni.nigelspal.messages.QuestionMessage.Operation;
-import java.text.DecimalFormat;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.Before;
@@ -26,7 +24,7 @@ public class AnswerMessageTest
         myQuestion = PowerMockito.mock(QuestionMessage.class);
         Mockito.when(myQuestion.getQuestionNumber()).thenReturn(1);
         Mockito.when(myQuestion.getFirstNumber()).thenReturn(1);
-        Mockito.when(myQuestion.getOperation()).thenReturn(Operation.ADD);
+        Mockito.when(myQuestion.getOperation()).thenReturn("+");
         Mockito.when(myQuestion.getSecondNumber()).thenReturn(2);
     }
 
@@ -40,7 +38,7 @@ public class AnswerMessageTest
     public void testGetMessage_Divide()
     {
         Mockito.when(myQuestion.getFirstNumber()).thenReturn(100);
-        Mockito.when(myQuestion.getOperation()).thenReturn(Operation.DIVIDE);
+        Mockito.when(myQuestion.getOperation()).thenReturn("/");
         Mockito.when(myQuestion.getSecondNumber()).thenReturn(20);
 
         assertEquals("A1. 5", new AnswerMessage(myQuestion).getMessage());
@@ -50,7 +48,7 @@ public class AnswerMessageTest
     public void testGetMessage_Multiply()
     {
         Mockito.when(myQuestion.getFirstNumber()).thenReturn(141085841);
-        Mockito.when(myQuestion.getOperation()).thenReturn(Operation.MULTIPLY);
+        Mockito.when(myQuestion.getOperation()).thenReturn("*");
         Mockito.when(myQuestion.getSecondNumber()).thenReturn(1913237513);
                 
         assertEquals("A1. 269930723554353433", new AnswerMessage(myQuestion).getMessage());
@@ -60,7 +58,7 @@ public class AnswerMessageTest
     public void testGetMessage_Subtract()
     {
         Mockito.when(myQuestion.getFirstNumber()).thenReturn(5);
-        Mockito.when(myQuestion.getOperation()).thenReturn(Operation.SUBTRACT);
+        Mockito.when(myQuestion.getOperation()).thenReturn("-");
         Mockito.when(myQuestion.getSecondNumber()).thenReturn(10);
                 
         assertEquals("A1. -5", new AnswerMessage(myQuestion).getMessage());
@@ -79,7 +77,7 @@ public class AnswerMessageTest
     public void testGetMessage_ThreeDecimalPlaces()
     {
         Mockito.when(myQuestion.getFirstNumber()).thenReturn(1);
-        Mockito.when(myQuestion.getOperation()).thenReturn(Operation.DIVIDE);
+        Mockito.when(myQuestion.getOperation()).thenReturn("/");
         Mockito.when(myQuestion.getSecondNumber()).thenReturn(3);
 
         assertEquals("A1. 0.333", new AnswerMessage(myQuestion).getMessage());
@@ -90,7 +88,7 @@ public class AnswerMessageTest
     public void testGetMessage_HalfEven()
     {
         Mockito.when(myQuestion.getFirstNumber()).thenReturn(101335);
-        Mockito.when(myQuestion.getOperation()).thenReturn(Operation.DIVIDE);
+        Mockito.when(myQuestion.getOperation()).thenReturn("/");
         Mockito.when(myQuestion.getSecondNumber()).thenReturn(10000);
 
         assertEquals("A1. 10.134", new AnswerMessage(myQuestion).getMessage());

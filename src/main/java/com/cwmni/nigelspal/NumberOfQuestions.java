@@ -1,7 +1,7 @@
 package com.cwmni.nigelspal;
 
 /**
- *
+ * Stores the number of questions required in a quiz.
  */
 public final class NumberOfQuestions extends Value<Integer>
 {

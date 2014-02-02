@@ -18,14 +18,14 @@ public final class Messenger
     private static final String NIGEL_EMAIL = "bangordev@gmail.com";
     private static final String CANT_SEND_MESSAGE_TO_NIGEL = "Can't send message to  " + NIGEL_EMAIL;
 
-    private final ChatManager myChatManager;
+    private final QuizChatManager myChatManager;
     private final ConnectionManager myConnectionManager;
     private final PacketCollectionManager myPacketCollectionManager;
 
     public Messenger(Username theUserName, Password thePassword)
     {
         myConnectionManager = new ConnectionManager(theUserName, thePassword);
-        myChatManager = new ChatManager(myConnectionManager, NIGEL_EMAIL);
+        myChatManager = new QuizChatManager(myConnectionManager, NIGEL_EMAIL);
         myPacketCollectionManager = new PacketCollectionManager(myConnectionManager, NIGEL_EMAIL);
     }
 
@@ -40,7 +40,7 @@ public final class Messenger
         } catch (XMPPException ex)
         {
             String theExMessage = String.format(CANT_SEND_MESSAGE_TO_NIGEL);
-            throw new MessangerException(theExMessage, ex);
+            throw new MessengerException(theExMessage, ex);
         }
     }
 

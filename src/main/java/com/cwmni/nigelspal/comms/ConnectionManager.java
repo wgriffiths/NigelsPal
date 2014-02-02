@@ -8,25 +8,35 @@ import org.jivesoftware.smack.XMPPConnection;
 import org.jivesoftware.smack.XMPPException;
 
 /**
- *
+ * Class used to create an XMPPConnection connection
  */
 final class ConnectionManager
 {
-
+    private static final String SERVICE = "gmail.com";
+    private static final String HOST = "talk.google.com";
+    private static final int PORT = 5222;
+    private static final String CANT_LOG_IN = "Can't log in to talk.google.com as %s";
+    
     private XMPPConnection myConnection;
     private final Username myUserName;
     private final Password myPassword;
-    private static final String CANT_LOG_IN = "Can't log in to talk.google.com as %s";
-
+    /**
+     * 
+     * @param theUserName - Username used to create connection.
+     * @param thePassword - Password used to create connection.
+     */
     public ConnectionManager(Username theUserName, Password thePassword)
     {
         myUserName = theUserName;
         myPassword = thePassword;
     }
 
+    /**
+     * @return Authenticated XMPPConnection
+     */
     public XMPPConnection get()
     {
-        if (myConnection == null || !myConnection.isAuthenticated())
+        if (myConnection == null)
         {
             myConnection = createConnection();
         }
@@ -34,7 +44,7 @@ final class ConnectionManager
         if (!myConnection.isAuthenticated())
         {
             String theMessage = String.format(CANT_LOG_IN, myUserName.getValue());
-            throw new MessangerException(theMessage);
+            throw new MessengerException(theMessage);
         }
 
         return myConnection;
@@ -44,7 +54,7 @@ final class ConnectionManager
     {
         try
         {
-            ConnectionConfiguration config = new ConnectionConfiguration("talk.google.com", 5222, "gmail.com");
+            ConnectionConfiguration config = new ConnectionConfiguration(HOST, PORT, SERVICE);
             XMPPConnection theConnection = new XMPPConnection(config);
             theConnection.connect();
             SASLAuthentication.supportSASLMechanism("PLAIN", 0);
@@ -54,7 +64,7 @@ final class ConnectionManager
         } catch (XMPPException ex)
         {
             String theMessage = String.format(CANT_LOG_IN, myUserName.getValue());
-            throw new MessangerException(theMessage);
+            throw new MessengerException(theMessage, ex);
         }
     }
 }

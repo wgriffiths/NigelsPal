@@ -1,6 +1,5 @@
 package com.cwmni.nigelspal.messages;
 
-import com.cwmni.nigelspal.messages.QuestionMessage.Operation;
 import java.text.DecimalFormat;
 
 /**
@@ -28,19 +27,19 @@ public final class AnswerMessage implements QuizMessage
 
     private String getAnswer()
     {
-        Operation theOperator = myQuestion.getOperation();
+        String theOperator = myQuestion.getOperation();
         long theSecondNumber = myQuestion.getSecondNumber();
         long theFirstNumber = myQuestion.getFirstNumber();
 
         switch (theOperator)
         {
-            case ADD:
+            case "+":
                 return (theFirstNumber + theSecondNumber)+"";
-            case SUBTRACT:
+            case "-":
                 return (theFirstNumber - theSecondNumber)+"";
-            case DIVIDE:
+            case "/":
                 return theAnswerFormat.format(theFirstNumber * 1.0 / theSecondNumber);
-            case MULTIPLY:
+            case "*":
                 return (theFirstNumber * theSecondNumber)+"";
 
         }

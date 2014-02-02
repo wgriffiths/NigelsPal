@@ -8,7 +8,8 @@ import org.jivesoftware.smack.filter.PacketTypeFilter;
 import org.jivesoftware.smack.packet.Message;
 
 /**
- *
+ * Used to create Smack PacketCollector. PacketCollector is filtered on supplied
+ * email/username
  */
 final class PacketCollectionManager
 {
@@ -17,12 +18,22 @@ final class PacketCollectionManager
     private final ConnectionManager myConnectionManager;
     private final String myRecipientAddress;
 
+    /**
+     *
+     * @param theConnectionManager - Connection manager used to create
+     * PacketCollector.
+     * @param theRecipientAddress - Recipient email address used to filter
+     * messages
+     */
     public PacketCollectionManager(ConnectionManager theConnectionManager, String theRecipientAddress)
     {
         myConnectionManager = theConnectionManager;
         myRecipientAddress = theRecipientAddress;
     }
 
+    /**
+     * @return PacketCollector
+     */
     public PacketCollector get()
     {
         if (myPacketCollector == null)

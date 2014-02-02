@@ -68,25 +68,25 @@ public class QuestionMessageTest
     @Test
     public void testGetOperation_Add()
     {
-        assertEquals(ADD, new QuestionMessage("Q10. What is 123+298?").getOperation());
+        assertEquals("+", new QuestionMessage("Q10. What is 123+298?").getOperation());
     }
 
     @Test
     public void testGetOperation_Subtract()
     {
-        assertEquals(SUBTRACT, new QuestionMessage("Q10. What is 123-298?").getOperation());
+        assertEquals("-", new QuestionMessage("Q10. What is 123-298?").getOperation());
     }
 
     @Test
     public void testGetOperation_Divide()
     {
-        assertEquals(DIVIDE, new QuestionMessage("Q10. What is 123/298?").getOperation());
+        assertEquals("/", new QuestionMessage("Q10. What is 123/298?").getOperation());
     }
 
     @Test
     public void testGetOperation_Multiply()
     {
-        assertEquals(MULTIPLY, new QuestionMessage("Q10. What is 123*298?").getOperation());
+        assertEquals("*", new QuestionMessage("Q10. What is 123*298?").getOperation());
     }
 
 }

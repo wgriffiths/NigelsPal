@@ -10,7 +10,7 @@ import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 
 /**
- *
+ * Class used to parse command line arguments and create into quiz settings.
  */
 class QuizRunnerCLIPasser
 {
@@ -18,11 +18,13 @@ class QuizRunnerCLIPasser
     private static final String USERNAME = "user";
     private static final String PASSWORD = "password";
     private static final String NUMBER_OF_QUESTIONS = "questions";
-
-
     private final QuizSettings myQuizSettings;
     private final Options myOptions;
 
+    /**
+     * 
+     * @param args - Command line arguments used. 
+     */
     public QuizRunnerCLIPasser(String[] args)
     {
         myOptions = createOptions();
@@ -78,7 +80,6 @@ class QuizRunnerCLIPasser
 
         return theOptions;
     }
-
 
     private String buildParseErrorMessage(String exceptionMessage)
     {

@@ -11,7 +11,7 @@ import com.cwmni.nigelspal.messages.ResetQuizMessage;
 import com.cwmni.nigelspal.messages.StartQuizMessage;
 
 /**
- *
+ * Used to run a quiz
  */
 final class QuizRunner
 {
@@ -20,12 +20,19 @@ final class QuizRunner
 
     private final QuizSettings myQuizSettings;
 
+    /**
+     * 
+     * @param theQuizSettings - Settings used to create quiz.
+     */
     public QuizRunner(QuizSettings theQuizSettings)
     {
         myQuizSettings = theQuizSettings;
     }
 
-    public void run() throws InterruptedException
+    /**
+     * Run the quiz
+     */
+    public void run()
     {
         Messenger theMessenger = new Messenger(myQuizSettings.getUserName(), myQuizSettings.getPassword());
 
