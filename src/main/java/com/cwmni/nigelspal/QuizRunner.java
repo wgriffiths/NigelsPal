@@ -28,7 +28,7 @@ final class QuizRunner
     {
         StartQuizMessage theStartMessage = new StartQuizMessage(100);
         Username theUserName = new Username("wjlgriffiths@gmail.com");
-        Password thePassword = new Password("***REMOVED***");
+        Password thePassword = new Password("REDACTED");
         Messenger theMessenger = new Messenger(theUserName, thePassword);
 
         theMessenger.send(theStartMessage);
