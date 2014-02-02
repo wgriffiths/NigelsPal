@@ -1,8 +1,6 @@
 package com.cwmni.nigelspal;
 
 import com.cwmni.nigelspal.comms.Messenger;
-import com.cwmni.nigelspal.comms.Password;
-import com.cwmni.nigelspal.comms.Username;
 import com.cwmni.nigelspal.messages.AnswerMessage;
 import com.cwmni.nigelspal.messages.EndMessage;
 import com.cwmni.nigelspal.messages.InvalidMessage;
@@ -18,22 +16,26 @@ import com.cwmni.nigelspal.messages.StartQuizMessage;
 final class QuizRunner
 {
 
-    private static final MessageRenderer theDisplay = new MessageRenderer();
-    public static void main(String[] args) throws InterruptedException
+    private static final MessageRenderer theMessageRenderer = new MessageRenderer();
+
+    private final QuizSettings myQuizSettings;
+
+    public QuizRunner(QuizSettings theQuizSettings)
     {
-        new QuizRunner().run();
+        myQuizSettings = theQuizSettings;
     }
 
     public void run() throws InterruptedException
     {
-        StartQuizMessage theStartMessage = new StartQuizMessage(100);
-        Username theUserName = new Username("wjlgriffiths@gmail.com");
-        Password thePassword = new Password("REDACTED");
-        Messenger theMessenger = new Messenger(theUserName, thePassword);
+        Messenger theMessenger = new Messenger(myQuizSettings.getUserName(), myQuizSettings.getPassword());
 
-        theMessenger.send(theStartMessage);
-        System.out.println(theStartMessage.getMessage());
+        Integer numberOfQuestions = myQuizSettings.getNumberOfQuestions().getValue();
+        StartQuizMessage theStartMessage = new StartQuizMessage(numberOfQuestions);
         
+        theMessenger.send(theStartMessage);
+        
+        theMessageRenderer.display(theStartMessage);
+
         QuizMessage theMessage;
 
         do
@@ -42,25 +44,24 @@ final class QuizRunner
 
             if (theMessage != null)
             {
-                theDisplay.display(theMessage);
-                
-                
+                theMessageRenderer.display(theMessage);
 
                 if (theMessage instanceof QuestionMessage)
                 {
                     QuestionMessage theQuestion = (QuestionMessage) theMessage;
                     AnswerMessage theAnswer = new AnswerMessage(theQuestion);
 
-                    theDisplay.display(theAnswer);
+                    theMessageRenderer.display(theAnswer);
+                    
                     theMessenger.send(theAnswer);
                 }
-                
+
                 if (theMessage instanceof InvalidMessage)
                 {
                     System.out.println("Woops let just start again ;)");
                     theMessenger.send(new ResetQuizMessage());
                 }
-            } 
+            }
 
         } while (!(theMessage instanceof EndMessage));
     }

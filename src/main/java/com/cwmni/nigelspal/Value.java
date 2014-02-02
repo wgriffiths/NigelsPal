@@ -1,4 +1,4 @@
-package com.cwmni.nigelspal.comms;
+package com.cwmni.nigelspal;
 
 /**
  * Used to create wrapper value objects

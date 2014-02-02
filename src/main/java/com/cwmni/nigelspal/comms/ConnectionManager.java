@@ -1,5 +1,7 @@
 package com.cwmni.nigelspal.comms;
 
+import com.cwmni.nigelspal.Username;
+import com.cwmni.nigelspal.Password;
 import org.jivesoftware.smack.ConnectionConfiguration;
 import org.jivesoftware.smack.SASLAuthentication;
 import org.jivesoftware.smack.XMPPConnection;

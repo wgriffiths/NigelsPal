@@ -1,5 +1,7 @@
 package com.cwmni.nigelspal.comms;
 
+import com.cwmni.nigelspal.Username;
+import com.cwmni.nigelspal.Password;
 import com.cwmni.nigelspal.messages.QuizMessage;
 import com.cwmni.nigelspal.messages.QuizMessageFactory;
 
