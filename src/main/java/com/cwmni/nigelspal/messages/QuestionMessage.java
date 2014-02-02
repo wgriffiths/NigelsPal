@@ -1,4 +1,4 @@
-package com.cwmni.nigelspal;
+package com.cwmni.nigelspal.messages;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -6,11 +6,12 @@ import java.util.regex.Pattern;
 /**
  *
  */
-final class Question
+public final class QuestionMessage implements QuizMessage
 {
 
-    enum Operation
+    public enum Operation
     {
+
         ADD, SUBTRACT, DIVIDE, MULTIPLY
     };
 
@@ -19,11 +20,13 @@ final class Question
     private final int myQuestionNumber;
     private final int myFirstNumber;
     private final int mySecondNumber;
-    private final String myOperator;
+    private final String myOperation;
+    private final String myMessage;
 
-    public Question(String theQuestion)
+    public QuestionMessage(String theMessage)
     {
-        Matcher theMatcher = QUESTION_PATTERN.matcher(theQuestion);
+        myMessage = theMessage;
+        Matcher theMatcher = QUESTION_PATTERN.matcher(theMessage);
 
         if (!theMatcher.find())
         {
@@ -32,8 +35,24 @@ final class Question
 
         myQuestionNumber = Integer.parseInt(theMatcher.group(1));
         myFirstNumber = Integer.parseInt(theMatcher.group(2));
-        myOperator = theMatcher.group(3);
+        myOperation = theMatcher.group(3);
         mySecondNumber = Integer.parseInt(theMatcher.group(4));
+    }
+
+    public static boolean isOne(String theMessage)
+    {
+        if (theMessage == null)
+        {
+            return false;
+        }
+
+        return QUESTION_PATTERN.matcher(theMessage).find();
+    }
+
+    @Override
+    public String getMessage()
+    {
+        return myMessage;
     }
 
     public int getQuestionNumber()
@@ -54,27 +73,27 @@ final class Question
     public Operation getOperation()
     {
 
-        if ("+".equals(myOperator))
+        if ("+".equals(myOperation))
         {
             return Operation.ADD;
         }
 
-        if ("-".equals(myOperator))
+        if ("-".equals(myOperation))
         {
             return Operation.SUBTRACT;
         }
 
-        if ("/".equals(myOperator))
+        if ("/".equals(myOperation))
         {
             return Operation.DIVIDE;
         }
 
-        if ("*".equals(myOperator))
+        if ("*".equals(myOperation))
         {
             return Operation.MULTIPLY;
         }
 
-        throw new UnsupportedOperationException("The " + myOperator + " operator is not supported.");
+        throw new UnsupportedOperationException("The " + myOperation + " operator is not supported.");
 
     }
 

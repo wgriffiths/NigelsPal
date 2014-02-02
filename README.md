@@ -2,8 +2,6 @@
 
 [![Build Status](https://travis-ci.org/wgriffiths/NigelsPal.png?branch=master)](https://travis-ci.org/wgriffiths/NigelsPal)
 
-## Commands
-Command supported by Nigel.
 
 ### Help
 A message in the form **'help'** will return a Nigel's intro message.
@@ -20,9 +18,6 @@ and should be rounded HALF_EVEN if necessary.
 ### Reset quiz
 A message in the form **'reset'** will reset the quiz.
 
-## Messages 
-Message returned by Nigel
-
 ### Questions
 
 Questions are sent by Nigel in the format **'Q\<N\>. What is \<INT\>\<OPERATOR\>\<INT\>?'**
@@ -35,6 +30,15 @@ be +, -, * or /.
 
 **'Incorrect'** is returned by Nigel if the submitted answer was correct.
 
+### End of Quiz
+
+**'Quiz over - there are no more questions. You got <CORRECT> correct out of <QUESTIONS> (<PERCENTAGE>%)'** 
+Is returned when quiz contained questions.
+
+or
+
+**'There are no more questions.'**
+Is returned if quiz did not contained questions.
 
 ### Example
 

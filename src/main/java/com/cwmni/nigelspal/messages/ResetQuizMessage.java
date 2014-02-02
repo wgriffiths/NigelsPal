@@ -1,9 +1,10 @@
-package com.cwmni.nigelspal;
+package com.cwmni.nigelspal.messages;
+
 
 /**
  *
  */
-final class ResetQuiz implements QuizeMessage
+public final class ResetQuizMessage implements QuizMessage
 {
 
     private static final String RESET_MESSAGE = "reset";
@@ -13,5 +14,4 @@ final class ResetQuiz implements QuizeMessage
     {
         return RESET_MESSAGE;
     }
-
 }
