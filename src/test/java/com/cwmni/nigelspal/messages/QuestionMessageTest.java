@@ -43,9 +43,9 @@ public class QuestionMessageTest
     }
 
     @Test
-    public void testGetFirstNumber_DiffrentOne()
+    public void testGetFirstNumber_Minus()
     {
-        assertEquals(42, new QuestionMessage("Q10. What is 42+2?").getFirstNumber());
+        assertEquals(-42, new QuestionMessage("Q10. What is -42+2?").getFirstNumber());
     }
 
     @Test
@@ -55,9 +55,9 @@ public class QuestionMessageTest
     }
 
     @Test
-    public void testGetSecondNumber_DiffrentOne()
+    public void testGetSecondNumber_Minus()
     {
-        assertEquals(9, new QuestionMessage("Q10. What is 123+9").getSecondNumber());
+        assertEquals(-9, new QuestionMessage("Q10. What is 123+-9").getSecondNumber());
     }
 
     @Test

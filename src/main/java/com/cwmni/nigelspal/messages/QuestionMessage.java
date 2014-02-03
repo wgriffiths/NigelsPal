@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
 public final class QuestionMessage implements QuizMessage
 {
 
-    private static final String QUESTION_REGEX = "Q([0-9]*). What is ([0-9]*)(\\+|-|/|\\*)([0-9]*)?";
+    private static final String QUESTION_REGEX = "Q([0-9]*). What is (\\-?[0-9]*)(\\+|-|/|\\*)(\\-?[0-9]*)?";
     private static final Pattern QUESTION_PATTERN = Pattern.compile(QUESTION_REGEX);
     private final int myQuestionNumber;
     private final int myFirstNumber;

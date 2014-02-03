@@ -16,17 +16,19 @@ import com.cwmni.nigelspal.messages.StartQuizMessage;
 final class QuizRunner
 {
 
-    private static final MessageRenderer theMessageRenderer = new MessageRenderer();
-
-    private final QuizSettings myQuizSettings;
+    private final MessageRenderer myRenderer = new MessageRenderer();
+    private final Messenger myMessenger;
+    private final StartQuizMessage myStartMessage;
 
     /**
-     * 
+     *
      * @param theQuizSettings - Settings used to create quiz.
      */
     public QuizRunner(QuizSettings theQuizSettings)
     {
-        myQuizSettings = theQuizSettings;
+        myMessenger = new Messenger(theQuizSettings.getUserName(), theQuizSettings.getPassword());
+        Integer numberOfQuestions = theQuizSettings.getNumberOfQuestions().getValue();
+        myStartMessage = new StartQuizMessage(numberOfQuestions);
     }
 
     /**
@@ -34,42 +36,45 @@ final class QuizRunner
      */
     public void run()
     {
-        Messenger theMessenger = new Messenger(myQuizSettings.getUserName(), myQuizSettings.getPassword());
-
-        Integer numberOfQuestions = myQuizSettings.getNumberOfQuestions().getValue();
-        StartQuizMessage theStartMessage = new StartQuizMessage(numberOfQuestions);
-        
-        theMessenger.send(theStartMessage);
-        
-        theMessageRenderer.display(theStartMessage);
-
+        myMessenger.send(myStartMessage);
+        myRenderer.display(myStartMessage);
         QuizMessage theMessage;
 
         do
         {
-            theMessage = theMessenger.poll();
-
-            if (theMessage != null)
+            if ((theMessage = myMessenger.poll()) != null)
             {
-                theMessageRenderer.display(theMessage);
-
-                if (theMessage instanceof QuestionMessage)
-                {
-                    QuestionMessage theQuestion = (QuestionMessage) theMessage;
-                    AnswerMessage theAnswer = new AnswerMessage(theQuestion);
-
-                    theMessageRenderer.display(theAnswer);
-                    
-                    theMessenger.send(theAnswer);
-                }
-
-                if (theMessage instanceof ErrorMessage)
-                {
-                    System.out.println("Woops let just start again ;)");
-                    theMessenger.send(new ResetQuizMessage());
-                }
+                processMessage(theMessage);
             }
 
         } while (!(theMessage instanceof EndMessage));
+    }
+
+    private void processMessage(QuizMessage theMessage)
+    {
+        myRenderer.display(theMessage);
+
+        if (theMessage instanceof QuestionMessage)
+        {
+            answerQuestion((QuestionMessage)theMessage);
+        }
+
+        if (theMessage instanceof ErrorMessage)
+        {
+            restartQuiz();
+        }
+    }
+
+    private void answerQuestion(QuestionMessage theMessage)
+    {
+        AnswerMessage theAnswer = new AnswerMessage(theMessage);
+        myRenderer.display(theAnswer);
+        myMessenger.send(theAnswer);
+    }
+    
+    private void restartQuiz()
+    {
+        System.out.println("Whoops let just start again ;)");
+        myMessenger.send(new ResetQuizMessage());
     }
 }
