@@ -47,11 +47,12 @@ public class AnswerMessageTest
      @Test
     public void testGetMessage_Multiply()
     {
-        Mockito.when(myQuestion.getFirstNumber()).thenReturn(141085841);
+        Mockito.when(myQuestion.getFirstNumber()).thenReturn(633472211);
         Mockito.when(myQuestion.getOperation()).thenReturn("*");
-        Mockito.when(myQuestion.getSecondNumber()).thenReturn(1913237513);
+        Mockito.when(myQuestion.getSecondNumber()).thenReturn(1444111081);
+        long theResult = 633472211l*1444111081l;
                 
-        assertEquals("A1. 269930723554353433", new AnswerMessage(myQuestion).getMessage());
+        assertEquals("A1. "+theResult, new AnswerMessage(myQuestion).getMessage());
     }
     
      @Test

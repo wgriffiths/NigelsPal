@@ -1,10 +1,29 @@
 package com.cwmni.nigelspal;
 
+import org.apache.commons.cli.HelpFormatter;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Before;
+import org.junit.runner.RunWith;
+import org.mockito.Mockito;
+import org.powermock.api.mockito.PowerMockito;
+import org.powermock.core.classloader.annotations.PrepareForTest;
+import org.powermock.modules.junit4.PowerMockRunner;
 
+@RunWith(PowerMockRunner.class)
+@PrepareForTest(
+        {
+            QuizRunnerCLIPasser.class
+        })
 public class QuizRunnerCLIPasserTest
 {
+
+    @Before
+    public void setup() throws Exception
+    {
+        HelpFormatter theHelpFormatter = Mockito.mock(HelpFormatter.class);
+        PowerMockito.whenNew(HelpFormatter.class).withNoArguments().thenReturn(theHelpFormatter);
+    }
 
     private static final String[] VALID_ARGS = new String[]
     {
@@ -50,7 +69,7 @@ public class QuizRunnerCLIPasserTest
         assertEquals(expected, result);
     }
 
-    @Test(expected=NumberFormatException.class)
+    @Test(expected = NumberFormatException.class)
     public void testGetQuizSettings_Questions_Invalid()
     {
         QuizRunnerCLIPasser theParsser = new QuizRunnerCLIPasser(ARGS_INVALID_NUMBER);

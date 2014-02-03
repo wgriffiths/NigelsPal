@@ -1,19 +1,31 @@
 package com.cwmni.nigelspal.messages;
 
+import org.apache.log4j.Logger;
+
 /**
- * Class used to display messages
+ * Class used to received messages
  */
 public final class MessageRenderer
 {
 
+    private static final Logger LOG = Logger.getLogger(MessageRenderer.class);
+
     /**
-     * Outputs message to standard out.
-     *
-     * @param theQuizMessage - Message to display
+     * @param theQuizMessage - Message to received
      */
-    public void display(QuizMessage theQuizMessage)
+    public void received(QuizMessage theQuizMessage)
     {
-        System.out.println("> " + theQuizMessage.getMessage());
+        LOG.info("(Received) "+theQuizMessage.getMessage());
     }
 
+    /**
+     * 
+     * @param theQuizMessage Message to sent
+     */
+    public void send(QuizMessage theQuizMessage)
+    {
+        LOG.info("(Sent) "+theQuizMessage.getMessage());
+    }
+
+   
 }

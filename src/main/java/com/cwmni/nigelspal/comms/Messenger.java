@@ -39,7 +39,7 @@ public final class Messenger
      *
      * @param theQuizMessage - Message to send
      */
-    public void send(QuizMessage theQuizMessage)
+    public synchronized void send(QuizMessage theQuizMessage)
     {
         Message theMessage = new Message(NIGEL_EMAIL);
         theMessage.setBody(theQuizMessage.getMessage());
@@ -59,7 +59,7 @@ public final class Messenger
      *
      * @return QuizeMessage receive or null.
      */
-    public QuizMessage poll()
+    public synchronized QuizMessage poll()
     {
         Packet thePacket = myPacketCollectionManager.get().pollResult();
 

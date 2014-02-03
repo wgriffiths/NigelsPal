@@ -22,8 +22,8 @@ final class QuizRunnerCLIPasser
     private final Options myOptions;
 
     /**
-     * 
-     * @param args - Command line arguments used. 
+     *
+     * @param args - Command line arguments used.
      */
     public QuizRunnerCLIPasser(String[] args)
     {
@@ -55,6 +55,7 @@ final class QuizRunnerCLIPasser
         } catch (ParseException ex)
         {
             String errorMessage = buildParseErrorMessage(ex.getMessage());
+            displayHelp();
             throw new IllegalArgumentException(errorMessage);
         }
     }
@@ -95,4 +96,10 @@ final class QuizRunnerCLIPasser
 
         return stringWriter.toString();
     }
+
+    private void displayHelp()
+    {
+        new HelpFormatter().printHelp(QuizRunnerCLI.class.getName(), myOptions);
+    }
+
 }
