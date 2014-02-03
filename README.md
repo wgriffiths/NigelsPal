@@ -1,7 +1,28 @@
-# A XMPP bot that talks to Nigel the quiz bot
+# A XMPP Client that talks to Nigel
 
 [![Build Status](https://travis-ci.org/wgriffiths/NigelsPal.png?branch=master)](https://travis-ci.org/wgriffiths/NigelsPal)
 
+## Build & Run
+
+The project uses Maven, so to perform a build use the followng command at the root. 
+
+```
+~/% mvn clean install
+```
+
+## Run CLI
+
+The main entry point is QuizRunnerCLI and the class takes the following arguments.
+
+```
+usage: com.cwmni.nigelspal.QuizRunnerCLI
+ -password <password123>   password used to login
+ -questions <10>           number of questions required.
+ -user <me@google.com>     full username used to login
+```
+
+## Overview
+Here is an overview of how Nigel runs a quiz.
 
 ### Help
 A message in the form **'help'** will return a Nigel's intro message.
@@ -32,7 +53,7 @@ be +, -, * or /.
 
 ### End of Quiz
 
-**'Quiz over - there are no more questions. You got <CORRECT> correct out of <QUESTIONS> (<PERCENTAGE>%)'** 
+**'Quiz over - there are no more questions. You got \<CORRECT\> correct out of \<QUESTIONS\> (\<PERCENTAGE\>%)'** 
 Is returned when quiz contained questions.
 
 or
