@@ -38,7 +38,7 @@ final class QuizRunner
     /**
      * Run the quiz
      */
-    public void run() throws InterruptedException
+    public void run()
     {
         startQuiz();
         QuizMessage theMessage;
@@ -48,7 +48,6 @@ final class QuizRunner
             if ((theMessage = myMessenger.poll()) != null)
             {
                 processMessage(theMessage);
-                sleep(1000);
             }
 
         } while (!(theMessage instanceof EndMessage));

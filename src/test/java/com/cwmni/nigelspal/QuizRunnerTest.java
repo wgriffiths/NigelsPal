@@ -72,7 +72,7 @@ public class QuizRunnerTest
     }
 
     @Test
-    public void testRun_StartMessage() throws InterruptedException
+    public void testRun_StartMessage()
     {
         Mockito.when(myMessenger.poll()).thenReturn(myEndMessage);
 
@@ -82,7 +82,7 @@ public class QuizRunnerTest
     }
 
     @Test
-    public void testRun_AnswerMessage() throws InterruptedException
+    public void testRun_AnswerMessage() 
     {
         Mockito.when(myMessenger.poll()).thenReturn(myQuestionMessage1).thenReturn(myEndMessage);
 
@@ -92,7 +92,7 @@ public class QuizRunnerTest
     }
 
     @Test
-    public void testRun_AnswerMessage_Two() throws InterruptedException
+    public void testRun_AnswerMessage_Two() 
     {
         Mockito.when(myMessenger.poll()).thenReturn(myQuestionMessage1).thenReturn(myQuestionMessage2).thenReturn(myEndMessage);
 
@@ -103,7 +103,7 @@ public class QuizRunnerTest
     }
 
     @Test
-    public void testRun_RestartMessage() throws InterruptedException
+    public void testRun_RestartMessage() 
     {
         Mockito.when(myMessenger.poll()).thenReturn(myErrorMessage).thenReturn(myEndMessage);
 
