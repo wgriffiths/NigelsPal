@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/wgriffiths/NigelsPal.png?branch=master)](https://travis-ci.org/wgriffiths/NigelsPal)
 
-## Build & Run
+## Build
 
 The project uses Maven, so to perform a build use the followng command at the root. 
 
@@ -10,7 +10,7 @@ The project uses Maven, so to perform a build use the followng command at the ro
 ~/% mvn clean install
 ```
 
-## Run CLI
+## Run 
 
 The main entry point is QuizRunnerCLI and the class takes the following arguments.
 
