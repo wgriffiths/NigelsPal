@@ -22,6 +22,11 @@ public final class QuizMessageFactory
             return new ErrorMessage(theMessageBody);
         }
 
+        if (HelpMessage.isOne(theMessageBody))
+        {
+            return new HelpMessage(theMessageBody);
+        }
+
         if (EndMessage.isOne(theMessageBody))
         {
             return new EndMessage(theMessageBody);

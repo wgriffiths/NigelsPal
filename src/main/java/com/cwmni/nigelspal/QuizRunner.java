@@ -10,7 +10,6 @@ import com.cwmni.nigelspal.messages.QuestionMessage;
 import com.cwmni.nigelspal.messages.QuizMessage;
 import com.cwmni.nigelspal.messages.ResetQuizMessage;
 import com.cwmni.nigelspal.messages.StartQuizMessage;
-import static java.lang.Thread.sleep;
 import org.apache.log4j.Logger;
 
 /**
@@ -66,11 +65,11 @@ final class QuizRunner
         {
             restartQuiz();
         }
-
+        
         if (theMessage instanceof HelpMessage)
         {
             startQuiz();
-        }
+        }   
     }
 
     private void answerQuestion(QuestionMessage theMessage)

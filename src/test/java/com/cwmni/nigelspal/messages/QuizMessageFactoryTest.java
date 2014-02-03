@@ -13,18 +13,19 @@ import org.powermock.modules.junit4.PowerMockRunner;
         {
             QuestionMessage.class, ErrorMessage.class,
             EndMessage.class, QuizMessageFactory.class,
-            OtherMessage.class
+            OtherMessage.class, HelpMessage.class
         })
 
 public class QuizMessageFactoryTest
 {
 
-    private static final String MESSAGE = "A";
+    private static final String MESSAGE = "This is a message";
 
     private QuestionMessage myQuestionMessage;
     private ErrorMessage myErrorMessage;
     private EndMessage myEndMessage;
     private OtherMessage myOtherMessage;
+    private HelpMessage myHelpMessage;
 
     private QuizMessageFactory instance;
 
@@ -34,16 +35,19 @@ public class QuizMessageFactoryTest
         PowerMockito.mockStatic(QuestionMessage.class);
         PowerMockito.mockStatic(ErrorMessage.class);
         PowerMockito.mockStatic(EndMessage.class);
+        PowerMockito.mockStatic(HelpMessage.class);
 
         myQuestionMessage = PowerMockito.mock(QuestionMessage.class);
         myErrorMessage = PowerMockito.mock(ErrorMessage.class);
         myEndMessage = PowerMockito.mock(EndMessage.class);
         myOtherMessage = PowerMockito.mock(OtherMessage.class);
+        myHelpMessage = PowerMockito.mock(HelpMessage.class);
 
         PowerMockito.whenNew(QuestionMessage.class).withArguments(MESSAGE).thenReturn(myQuestionMessage);
         PowerMockito.whenNew(ErrorMessage.class).withArguments(MESSAGE).thenReturn(myErrorMessage);
         PowerMockito.whenNew(EndMessage.class).withArguments(MESSAGE).thenReturn(myEndMessage);
         PowerMockito.whenNew(OtherMessage.class).withArguments(MESSAGE).thenReturn(myOtherMessage);
+        PowerMockito.whenNew(HelpMessage.class).withArguments(MESSAGE).thenReturn(myHelpMessage);
 
         instance = new QuizMessageFactory();
 
@@ -68,6 +72,13 @@ public class QuizMessageFactoryTest
     {
         PowerMockito.when(EndMessage.isOne(MESSAGE)).thenReturn(Boolean.TRUE);
         assertEquals(myEndMessage, instance.get(MESSAGE));
+    }
+
+    @Test
+    public void testGet_Help()
+    {
+        PowerMockito.when(HelpMessage.isOne(MESSAGE)).thenReturn(Boolean.TRUE);
+        assertEquals(myHelpMessage, instance.get(MESSAGE));
     }
 
     @Test
