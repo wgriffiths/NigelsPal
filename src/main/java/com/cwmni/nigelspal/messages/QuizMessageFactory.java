@@ -1,36 +1,33 @@
 package com.cwmni.nigelspal.messages;
 
 /**
- *
+ * Factory class for creating message objects from Strings i.e message contents.
  */
 public class QuizMessageFactory
 {
 
-    private final String myMessageBody;
-
-    public QuizMessageFactory(String theMessageBody)
+    /**
+     * @param theMessageBody - Message content
+     * @return - QuizMessage created from string.
+     */
+    public QuizMessage get(String theMessageBody)
     {
-        myMessageBody = theMessageBody;
-    }
-
-    public QuizMessage get()
-    {
-        if (QuestionMessage.isOne(myMessageBody))
+        if (QuestionMessage.isOne(theMessageBody))
         {
-            return new QuestionMessage(myMessageBody);
+            return new QuestionMessage(theMessageBody);
         }
 
-        if (InvalidMessage.isOne(myMessageBody))
+        if (ErrorMessage.isOne(theMessageBody))
         {
-            return new InvalidMessage(myMessageBody);
+            return new ErrorMessage(theMessageBody);
         }
 
-        if (EndMessage.isOne(myMessageBody))
+        if (EndMessage.isOne(theMessageBody))
         {
-            return new EndMessage(myMessageBody);
+            return new EndMessage(theMessageBody);
         }
 
-        return new OtherMessage(myMessageBody);
+        return new OtherMessage(theMessageBody);
     }
 
 }

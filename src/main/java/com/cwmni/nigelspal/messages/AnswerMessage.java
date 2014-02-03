@@ -3,16 +3,23 @@ package com.cwmni.nigelspal.messages;
 import java.text.DecimalFormat;
 
 /**
- *
+ * Answer message, implements QuizMessage interface
  */
 public final class AnswerMessage implements QuizMessage
 {
 
+    private static final String MULTIPLY = "*";
+    private static final String DIVIDE = "/";
+    private static final String MINUS = "-";
+    private static final String PLUS = "+";
     private static final String ANSWER_MESSAGE = "A%s. %s";
     private final String myAnswer;
     private final QuestionMessage myQuestion;
     private final DecimalFormat theAnswerFormat = new DecimalFormat("#.###");
 
+    /**
+     * @param theQuestion - Question that will be answered.
+     */
     public AnswerMessage(QuestionMessage theQuestion)
     {
         myQuestion = theQuestion;
@@ -33,14 +40,14 @@ public final class AnswerMessage implements QuizMessage
 
         switch (theOperator)
         {
-            case "+":
-                return (theFirstNumber + theSecondNumber)+"";
-            case "-":
-                return (theFirstNumber - theSecondNumber)+"";
-            case "/":
+            case PLUS:
+                return Long.toString(theFirstNumber + theSecondNumber);
+            case MINUS:
+                return Long.toString(theFirstNumber - theSecondNumber);
+            case DIVIDE:
                 return theAnswerFormat.format(theFirstNumber * 1.0 / theSecondNumber);
-            case "*":
-                return (theFirstNumber * theSecondNumber)+"";
+            case MULTIPLY:
+                return Long.toString(theFirstNumber * theSecondNumber);
 
         }
 

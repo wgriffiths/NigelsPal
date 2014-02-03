@@ -1,10 +1,5 @@
 package com.cwmni.nigelspal.messages;
 
-
-import static com.cwmni.nigelspal.messages.QuestionMessage.Operation.ADD;
-import static com.cwmni.nigelspal.messages.QuestionMessage.Operation.DIVIDE;
-import static com.cwmni.nigelspal.messages.QuestionMessage.Operation.MULTIPLY;
-import static com.cwmni.nigelspal.messages.QuestionMessage.Operation.SUBTRACT;
 import org.junit.Test;
 import static org.junit.Assert.*;
 

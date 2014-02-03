@@ -3,7 +3,7 @@ package com.cwmni.nigelspal;
 import com.cwmni.nigelspal.comms.Messenger;
 import com.cwmni.nigelspal.messages.AnswerMessage;
 import com.cwmni.nigelspal.messages.EndMessage;
-import com.cwmni.nigelspal.messages.InvalidMessage;
+import com.cwmni.nigelspal.messages.ErrorMessage;
 import com.cwmni.nigelspal.messages.MessageRenderer;
 import com.cwmni.nigelspal.messages.QuestionMessage;
 import com.cwmni.nigelspal.messages.QuizMessage;
@@ -63,7 +63,7 @@ final class QuizRunner
                     theMessenger.send(theAnswer);
                 }
 
-                if (theMessage instanceof InvalidMessage)
+                if (theMessage instanceof ErrorMessage)
                 {
                     System.out.println("Woops let just start again ;)");
                     theMessenger.send(new ResetQuizMessage());

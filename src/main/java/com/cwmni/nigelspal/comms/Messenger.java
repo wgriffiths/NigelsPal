@@ -10,7 +10,7 @@ import org.jivesoftware.smack.packet.Message;
 import org.jivesoftware.smack.packet.Packet;
 
 /**
- *
+ * Used to send and receive messages
  */
 public final class Messenger
 {
@@ -22,6 +22,11 @@ public final class Messenger
     private final ConnectionManager myConnectionManager;
     private final PacketCollectionManager myPacketCollectionManager;
 
+    /**
+     *
+     * @param theUserName - Username used to connect
+     * @param thePassword - password used to connect
+     */
     public Messenger(Username theUserName, Password thePassword)
     {
         myConnectionManager = new ConnectionManager(theUserName, thePassword);
@@ -29,6 +34,11 @@ public final class Messenger
         myPacketCollectionManager = new PacketCollectionManager(myConnectionManager, NIGEL_EMAIL);
     }
 
+    /**
+     * Send supplied message
+     *
+     * @param theQuizMessage - Message to send
+     */
     public void send(QuizMessage theQuizMessage)
     {
         Message theMessage = new Message(NIGEL_EMAIL);
@@ -44,6 +54,11 @@ public final class Messenger
         }
     }
 
+    /**
+     * Polls for a new message, if no message is not found null is returned.
+     *
+     * @return QuizeMessage receive or null.
+     */
     public QuizMessage poll()
     {
         Packet thePacket = myPacketCollectionManager.get().pollResult();
@@ -60,7 +75,7 @@ public final class Messenger
             return null;
         }
 
-        return new QuizMessageFactory(theMessageBody).get();
+        return new QuizMessageFactory().get(theMessageBody);
 
     }
 

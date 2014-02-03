@@ -4,16 +4,10 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- *
+ * Question Message
  */
 public final class QuestionMessage implements QuizMessage
 {
-
-    public enum Operation
-    {
-
-        ADD, SUBTRACT, DIVIDE, MULTIPLY
-    };
 
     private static final String QUESTION_REGEX = "Q([0-9]*). What is ([0-9]*)(\\+|-|/|\\*)([0-9]*)?";
     private static final Pattern QUESTION_PATTERN = Pattern.compile(QUESTION_REGEX);
@@ -23,6 +17,10 @@ public final class QuestionMessage implements QuizMessage
     private final String myOperation;
     private final String myMessage;
 
+    /**
+     *
+     * @param theMessage - the message content.
+     */
     public QuestionMessage(String theMessage)
     {
         myMessage = theMessage;
@@ -39,6 +37,11 @@ public final class QuestionMessage implements QuizMessage
         mySecondNumber = Integer.parseInt(theMatcher.group(4));
     }
 
+    /**
+     * @param theMessage - String to test
+     * @return true if supplied String is a valid question message, otherwise
+     * false.
+     */
     public static boolean isOne(String theMessage)
     {
         if (theMessage == null)
@@ -55,24 +58,36 @@ public final class QuestionMessage implements QuizMessage
         return myMessage;
     }
 
+    /**
+     * @return - Number of question.
+     */
     public int getQuestionNumber()
     {
         return myQuestionNumber;
     }
 
+    /**
+     * @return First number in question
+     */
     public int getFirstNumber()
     {
         return myFirstNumber;
     }
 
+    /**
+     * @return second number in question.
+     */
     public int getSecondNumber()
     {
         return mySecondNumber;
     }
 
+    /**
+     * @return Operation requested in question.
+     */
     public String getOperation()
     {
-       return myOperation;
+        return myOperation;
     }
 
 }

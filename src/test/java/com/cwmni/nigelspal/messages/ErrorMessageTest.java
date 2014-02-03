@@ -3,25 +3,25 @@ package com.cwmni.nigelspal.messages;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-public class InvalidMessageTest
+public class ErrorMessageTest
 {
 
     @Test
     public void testIsOne()
     {
-        assertTrue(InvalidMessage.isOne("Invalid bla bla bla"));
+        assertTrue(ErrorMessage.isOne("Invalid bla bla bla"));
     }
 
     @Test
     public void testIsOne_Invalid()
     {
-        assertFalse(InvalidMessage.isOne("bla bla bla"));
+        assertFalse(ErrorMessage.isOne("bla bla bla"));
     }
 
     @Test
     public void testIsOne_Null()
     {
-        assertFalse(InvalidMessage.isOne(null));
+        assertFalse(ErrorMessage.isOne(null));
     }
 
 }
