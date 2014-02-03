@@ -3,7 +3,7 @@ package com.cwmni.nigelspal.messages;
 /**
  * Factory class for creating message objects from Strings i.e message contents.
  */
-public class QuizMessageFactory
+public final class QuizMessageFactory
 {
 
     /**

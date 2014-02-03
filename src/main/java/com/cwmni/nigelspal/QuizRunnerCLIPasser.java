@@ -12,7 +12,7 @@ import org.apache.commons.cli.ParseException;
 /**
  * Class used to parse command line arguments and create into quiz settings.
  */
-class QuizRunnerCLIPasser
+final class QuizRunnerCLIPasser
 {
 
     private static final String USERNAME = "user";

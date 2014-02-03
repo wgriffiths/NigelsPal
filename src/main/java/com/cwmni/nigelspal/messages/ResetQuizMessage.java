@@ -2,7 +2,7 @@ package com.cwmni.nigelspal.messages;
 
 
 /**
- *
+ * Message sent to reset quiz.
  */
 public final class ResetQuizMessage implements QuizMessage
 {

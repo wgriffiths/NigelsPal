@@ -2,9 +2,7 @@
 
 package com.cwmni.nigelspal;
 
-import com.cwmni.nigelspal.messages.QuestionMessage;
 import org.junit.Test;
-import static org.junit.Assert.*;
 import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
