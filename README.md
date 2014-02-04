@@ -53,7 +53,7 @@ be +, -, * or /.
 
 ### End of Quiz
 
-**'Quiz over - there are no more questions. You got \<CORRECT\> correct out of \<QUESTIONS\> (\<PERCENTAGE\>%)'** 
+**'Quiz over - there are no more questions. You got \<CORRECT\> correct out of \<QUESTIONS\> \(\<PERCENTAGE\>%\)'** 
 Is returned when quiz contained questions.
 
 or
